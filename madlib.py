@@ -13,22 +13,25 @@ def welcome():
 
 
 def parse_template(text):
+    """Uses regex to parse the template taken from the read_template function"""
     regex_pattern = re.compile(r"\{[^}]*}", re.IGNORECASE)
     regex = re.sub(regex_pattern, '{}', text)
     Mad_libs_dict['text_templates'] = regex
 
-    parts_list = re.findall(regex_pattern, text)
+    words_list = re.findall(regex_pattern, text)
 
-    parts = []
+    words = []
 
-    for part in parts_list:
-        parts.append(part[1:-1])
-        Mad_libs_dict['adjective'].append(part[1:-1])
+    for word in words_list:
+        word = word.strip("{}")
+        words.append(word)
+        Mad_libs_dict['adjective'].append(word)
 
-    return regex, tuple(parts)
+    return regex, tuple(words)
 
 
 def read_template(file):
+    """Opens a file which is specified by the user"""
     try:
         with open(file, 'r') as text:
             item = text.read()
