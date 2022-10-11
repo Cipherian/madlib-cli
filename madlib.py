@@ -13,9 +13,10 @@ def welcome():
 
 
 def parse_template(text):
-    regex = re.sub(r"[{][^}]+[}]", '{}', text)
+    regex_pattern = re.compile(r"\{[^}]*}", re.IGNORECASE)
+    regex = re.sub(regex_pattern, '{}', text)
 
-    parts_list = re.findall(r"[{][^}]+[}]", text)
+    parts_list = re.findall(regex_pattern, text)
 
     parts = []
 
@@ -31,6 +32,7 @@ def read_template(file):
         with open(file, 'r') as text:
             item = text.read()
             Mad_libs_dict['text_templates'] = item
+            print(Mad_libs_dict['text_templates'])
             return item
     except FileNotFoundError as error:
         print(error)
@@ -72,6 +74,7 @@ def mad_libs_game():
 if __name__ == "__main__":
     welcome()
     mad_libs_game()
+
 
 
 
