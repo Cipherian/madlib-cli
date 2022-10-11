@@ -15,6 +15,7 @@ def welcome():
 def parse_template(text):
     regex_pattern = re.compile(r"\{[^}]*}", re.IGNORECASE)
     regex = re.sub(regex_pattern, '{}', text)
+    Mad_libs_dict['text_templates'] = regex
 
     parts_list = re.findall(regex_pattern, text)
 
@@ -31,8 +32,6 @@ def read_template(file):
     try:
         with open(file, 'r') as text:
             item = text.read()
-            Mad_libs_dict['text_templates'] = item
-            print(Mad_libs_dict['text_templates'])
             return item
     except FileNotFoundError as error:
         print(error)
@@ -48,13 +47,13 @@ def save_story(story):
 def play_game(text_file):
     entries = []
     content = read_template(text_file)
-    parsed_text = parse_template(content)
+    parse_template(content)
     for word in Mad_libs_dict['adjective']:
         print(f"I need a(n): {word}")
         user_input = input("Fill in words here: ")
         entries.append(user_input)
 
-    story = merge(parsed_text[0], tuple(entries))
+    story = merge(Mad_libs_dict['text_templates'], tuple(entries))
     print(story)
     save_story(story)
     exit()
@@ -68,7 +67,7 @@ def mad_libs_game():
         if user_input.lower() == "GAMING".lower():
             play_game(large_template)
         else:
-            print('Play some other time')
+            print('Play some other time!')
 
 
 if __name__ == "__main__":
