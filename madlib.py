@@ -56,6 +56,7 @@ def play_game(text_file):
     story = merge(Mad_libs_dict['text_templates'], tuple(entries))
     print(story)
     save_story(story)
+    print('Thank you for playing my mad libs game!')
     exit()
 
 def mad_libs_game():
