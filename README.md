@@ -2,7 +2,9 @@
 
 ## Date: 10/10/2022
 
-## Slice method and regex method found thanks to Stackoverflow, game structure inspired by Kassie Bradshaw.
+## Github Repo: [Mad_Lib](https://github.com/Cipherian/madlib-cli)
+
+## Game structure inspired by Kassie Bradshaw.
 
 ## Overview
 

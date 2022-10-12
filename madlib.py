@@ -3,6 +3,7 @@ import re
 small_template = "assets/dark_and_stormy_night_template.txt"
 large_template = "assets/template.txt"
 Mad_libs_dict ={
+    """Stores the stripped strings in text_templates and stores adjectives, verbs and nouns in the list"""
     "text_templates": "",
     "adjective": []
 }
